@@ -31,7 +31,6 @@ async def add_note(new_note: str):
     phrase = transform_text(new_note)
     new_sentence = SentenceModel(note=new_note, phrase=phrase)
     sentence = await db["sentence"].insert_one(dict(new_sentence))
-    # return sentence
     response = {"suggest": phrase}
     return JSONResponse(content=response)
 
